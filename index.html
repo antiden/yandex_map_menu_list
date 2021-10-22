@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yandex Map with Menu items control</title>
+
+  <link rel="stylesheet" href="index.css">
+
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="map__adress">
+      <ul>
+        <li class="js-address" data-lng="55.76" data-lat="37.64" data-name='Москва' data-adress='Адрес'>Москва</li>
+        <li class="js-address" data-lng="59.94" data-lat="30.31" data-name='Санкт-Петербург' data-adress='Адрес'>Санкт-Петербург</li>
+        <li class="js-address" data-lng="57.626559" data-lat="39.893813" data-name='Ярославль' data-adress='Адрес'>Ярославль</li>
+      </ul>
+    </div>
+    <div id="map" class="map">
+      <div class="marker" data-name='Москва' data-adress='Адрес' data-lng='55.76' data-lat='37.64' data-ico=''></div>
+      <div class="marker" data-name='Санкт-Петербург' data-adress='Адрес' data-lng='59.94' data-lat='30.31' data-ico=''></div>
+      <div class="marker" data-name='Ярославль' data-adress='Адрес' data-lng='57.626559' data-lat='39.893813' data-ico=''></div>
+    </div>
+  </div>
+  
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=<api-key>" type="text/javascript"></script>
+  <script src="https://yandex.st/jquery/2.2.3/jquery.min.js" type="text/javascript"></script>
+  <script src="map.js"></script>
+</body>
+</html>
+
