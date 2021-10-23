@@ -42,7 +42,9 @@ function init(){
             );
             yaMap.geoObjects.add(myPlacemark);
 
-            $('.js-address').each(function() {
+            var mapAddress = $('.js-address');
+
+            mapAddress.each(function() {
                 var self = $(this);
                 self.bind({
                     click: function(name) {
@@ -51,6 +53,8 @@ function init(){
                         name = self.data('name');
                         adress = self.data('adress');
                         //myPlacemark.geometry.setCoordinates([lng, lat]);
+                        mapAddress.removeClass('active');
+                        self.addClass('active');
                         yaMap.setCenter(myPlacemark.geometry.getCoordinates());
                         yaMap.balloon.close();
                         myPlacemark = new ymaps.Placemark(
