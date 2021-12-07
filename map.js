@@ -1,5 +1,10 @@
-ymaps.ready(init);
 var yaMap, myPlacemark;
+var elmap = document.getElementById("map");
+var resetButton = document.querySelector('.reset');
+
+if (elmap) {
+    ymaps.ready(init);
+}
 
 function init(){
     yaMap = new ymaps.Map("map", {
@@ -93,8 +98,6 @@ function centerMap () {
         }
     );
 }
-
-var resetButton = document.querySelector('.reset');
 
 function reset() {
     centerMap();
