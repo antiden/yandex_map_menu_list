@@ -72,7 +72,9 @@ function init(){
         }
     }
 
-    places($(".marker").toArray().reverse());
+    var markers = document.querySelectorAll(".marker");
+
+    places(markers);
     yaMap.behaviors.disable('scrollZoom');
 
     /*Центрируем карту по маркерам*/
