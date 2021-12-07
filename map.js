@@ -1,5 +1,6 @@
 var yaMap, myPlacemark;
 var elmap = document.getElementById("map");
+var defaults = document.querySelector('.marker');
 var resetButton = document.querySelector('.reset');
 
 if (elmap) {
@@ -8,7 +9,7 @@ if (elmap) {
 
 function init(){
     yaMap = new ymaps.Map("map", {
-        center: [55.781068, 49.213171],
+        center: [Number(defaults.dataset.lng),Number(defaults.dataset.lat)],
         zoom: 12,
         controls: ['geolocationControl', 'trafficControl', 'typeSelector', 'fullscreenControl', 'zoomControl', 'routeButtonControl']
     });
@@ -55,7 +56,6 @@ function init(){
                     lat = Number(e.target.dataset.lat);
                     name = e.target.dataset.name;
                     adress = e.target.dataset.adress;
-                    //myPlacemark.geometry.setCoordinates([lng, lat]);
                     mapAddress.forEach(el => {
                         el.classList.remove('active');
                     });
