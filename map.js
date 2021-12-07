@@ -10,11 +10,12 @@ function init(){
 
     function places( place ) {
         for ( var i = 0; i < place.length; i++ ) {
-            var lng = $(place[i]).data('lng');
-            var lat = $(place[i]).data('lat');
-            var name = $(place[i]).data('name');
-            var adress = $(place[i]).data('adress');
-            var ico = $(place[i]).data('ico');
+
+            var lng = Number(place[i].dataset.lng);
+            var lat = Number(place[i].dataset.lat);
+            var name = place[i].dataset.name;
+            var adress = place[i].dataset.adress;
+            var ico = place[i].dataset.ico;
 
             if (ico == '') {
                 var icon = {
@@ -41,33 +42,31 @@ function init(){
             );
             yaMap.geoObjects.add(myPlacemark);
 
-            var mapAddress = $('.js-address');
+            var mapAddress = document.querySelectorAll('.js-address');
 
-            mapAddress.each(function() {
-                var self = $(this);
-                self.bind({
-                    click: function(name) {
-                        lng = self.data('lng');
-                        lat = self.data('lat');
-                        name = self.data('name');
-                        adress = self.data('adress');
-                        //myPlacemark.geometry.setCoordinates([lng, lat]);
-                        mapAddress.removeClass('active');
-                        self.addClass('active');
-                        yaMap.setCenter(myPlacemark.geometry.getCoordinates());
-                        yaMap.balloon.close();
-                        myPlacemark = new ymaps.Placemark(
-                            [lng, lat],
-                            {
-                                iconContent: '',
-                                balloonContentHeader: name,
-                                balloonContentBody: adress
-                            }, icon
-                        );
-                        yaMap.geoObjects.add(myPlacemark);
-                        
-                    }
-                })
+            mapAddress.forEach(function(el) {
+                el.addEventListener("click", function (e) {
+                    lng = Number(e.target.dataset.lng);
+                    lat = Number(e.target.dataset.lat);
+                    name = e.target.dataset.name;
+                    adress = e.target.dataset.adress;
+                    //myPlacemark.geometry.setCoordinates([lng, lat]);
+                    mapAddress.forEach(el => {
+                        el.classList.remove('active');
+                    });
+                    e.target.classList.add('active');
+                    yaMap.setCenter(myPlacemark.geometry.getCoordinates());
+                    yaMap.balloon.close();
+                    myPlacemark = new ymaps.Placemark(
+                        [lng, lat],
+                        {
+                            iconContent: '',
+                            balloonContentHeader: name,
+                            balloonContentBody: adress
+                        }, icon
+                    );
+                    yaMap.geoObjects.add(myPlacemark);
+                });
             });
         }
     }
