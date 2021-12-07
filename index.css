@@ -1,3 +1,9 @@
+:root {
+  --main_dark: 0,0,0;
+  --main_white: 255,255,255;
+  --main_color: 138, 43, 226;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -45,4 +51,20 @@ body {
 
 .map__adress ul li:last-child {
   margin-bottom: 0;
+}
+
+.reset {
+  margin-top: 15px;
+  background: rgb(var(--main_white));
+  color: rgb(var(--main_dark));
+  border: 1px solid rgba(var(--main_dark), 0.3);
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.reset:hover {
+  background: rgb(var(--main_color));
+  border-color: rgb(var(--main_color));
+  color: rgb(var(--main_white));
 }

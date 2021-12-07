@@ -9,7 +9,6 @@ function init(){
     });
 
     function places( place ) {
-        var item = [];
         for ( var i = 0; i < place.length; i++ ) {
             var lng = $(place[i]).data('lng');
             var lat = $(place[i]).data('lat');
@@ -77,5 +76,31 @@ function init(){
     yaMap.behaviors.disable('scrollZoom');
 
     /*Центрируем карту по маркерам*/
-    yaMap.setBounds(yaMap.geoObjects.getBounds(),{checkZoomRange:true}).then(function(){ if(yaMap.getZoom() > 16) yaMap.setZoom(16);});
+    centerMap();
+}
+
+function centerMap () {
+    yaMap.setBounds(
+    yaMap.geoObjects.getBounds(), {
+        checkZoomRange:true
+    })
+    .then(
+        function(){
+            if(yaMap.getZoom() > 16) {
+                yaMap.setZoom(16)
+            }
+        }
+    );
+}
+
+var resetButton = document.querySelector('.reset');
+
+function reset() {
+    centerMap();
+}
+
+if (resetButton) {
+    resetButton.addEventListener("click", () => {
+        reset();
+    });
 }
