@@ -45,7 +45,8 @@ body {
   transition: all 0.3s;
 }
 
-.map__adress ul li:hover {
+.map__adress ul li:hover,
+.map__adress ul li.active {
   border-color: red;
 }
 

@@ -101,6 +101,10 @@ function centerMap () {
 
 function reset() {
     centerMap();
+    var mapAddress = document.querySelectorAll('.js-address');
+    mapAddress.forEach(el => {
+        el.classList.remove('active');
+    });
 }
 
 if (resetButton) {
