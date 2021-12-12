@@ -1,9 +1,10 @@
 var yaMap, myPlacemark;
 var elmap = document.getElementById("map");
-var defaults = document.querySelector('.marker');
-var resetButton = document.querySelector('.reset');
 
 if (elmap) {
+    var defaults = document.querySelector('.marker');
+    var eladdress = document.querySelector('.map__adress');
+    var resetButton = document.querySelector('.reset');
     ymaps.ready(init);
 }
 
@@ -52,14 +53,15 @@ function init(){
 
             mapAddress.forEach(function(el) {
                 el.addEventListener("click", function (e) {
-                    lng = Number(e.target.dataset.lng);
-                    lat = Number(e.target.dataset.lat);
-                    name = e.target.dataset.name;
-                    adress = e.target.dataset.adress;
+                    lng = Number(e.currentTarget.dataset.lng);
+                    lat = Number(e.currentTarget.dataset.lat);
+                    name = e.currentTarget.dataset.name;
+                    adress = e.currentTarget.dataset.adress;
                     mapAddress.forEach(el => {
                         el.classList.remove('active');
                     });
-                    e.target.classList.add('active');
+                    eladdress.classList.add('active');
+                    e.currentTarget.classList.add('active');
                     yaMap.setCenter(myPlacemark.geometry.getCoordinates());
                     yaMap.balloon.close();
                     myPlacemark = new ymaps.Placemark(
